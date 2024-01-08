@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  stream-diffusion:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: stream-diffusion:latest
+    volumes:
+      - .:/home/ubuntu/streamdiffusion
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
